@@ -4,11 +4,12 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const {
   getGeographyInfo,
-  getOpenWeatherMapForecast,
   getPixabayResources,
   getWeatherBitForecast,
+  getCountryInfo,
+  getCurrencyExchangeRate,
 } = require("./services");
-const { isToday } = require("./utils");
+const { dateDiff } = require("../utils");
 
 const projectData = [];
 
@@ -25,32 +26,52 @@ app.get("/trips", async (req, res) => {
 
 // Create new trip
 app.post("/trips", async (req, res) => {
-  console.log("req.body :>> ", req.body);
-  const {
-    data: {
-      postalCodes: [{ lat, lng: long }],
-    },
-  } = await getGeographyInfo(req.body.place);
-
   const from = new Date(req.body.from);
   const to = new Date(req.body.to);
+  let geographyInfo;
+  try {
+    geographyInfo = await (await getGeographyInfo(req.body.place)).data;
+  } catch (error) {
+    res.statusCode(400).send({ error });
+    return;
+  }
 
-  let weatherData;
+  if (!geographyInfo.postalCodes.length) {
+    res.statusCode(400).send({ error });
+    return;
+  }
+
+  const {
+    postalCodes: [{ lat, lng: long, countryCode }],
+  } = geographyInfo;
 
   try {
-    if (isToday(from)) {
-      weatherData = await (await getOpenWeatherMapForecast(lat, long)).data;
-    } else {
-      weatherData = await (await getWeatherBitForecast(lat, long)).data;
-    }
+    let weatherData = await (await getWeatherBitForecast(lat, long)).data;
 
     const placeData = await (await getPixabayResources(req.body.place)).data;
 
-    const tripData = { weatherData, placeData, lat, long };
+    const countryData = await (await getCountryInfo(countryCode)).data;
+    const currencyExchangeRateInfo = await (
+      await getCurrencyExchangeRate(
+        ...countryData.currencies.map((currency) => currency.code)
+      )
+    ).data;
+
+    const tripData = {
+      request: req.body,
+      geographyInfo,
+      weatherData,
+      placeData,
+      countryData,
+      currencyExchangeRateInfo,
+      lat,
+      long,
+      tripLength: dateDiff(from, to),
+      tripStartIn: dateDiff(from),
+    };
     projectData.push(tripData);
     res.send(tripData);
   } catch (error) {
-    console.log("error :>> ", error);
     res.status(500).send({ error });
   }
 });

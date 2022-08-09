@@ -1,2 +1,47 @@
 @import "scss-reset/_reset.scss";
+@import url("https://fonts.googleapis.com/css2?family=Bellota+Text:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap");
 @import "./layout.scss";
+
+/* width */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f133;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #8885;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #5555;
+}
+
+body {
+  font-family: "Bellota Text", cursive;
+}
+
+button,
+input {
+  font-size: 20px;
+  padding: 16px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
+    rgba(0, 0, 0, 0.22) 0px 15px 12px;
+  background-color: rgb(255 246 225);
+  border-radius: 4px;
+  min-width: 96px;
+  color: #347aff;
+  border: 0;
+}
+
+button:hover,
+input:hover {
+  box-shadow: rgba(185, 185, 255, 0.25) 0px 30px 60px -12px inset,
+    rgba(250, 194, 194, 0.3) 0px 18px 36px -18px inset;
+}

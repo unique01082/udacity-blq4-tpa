@@ -1,5 +1,6 @@
 const isToday = (someDate) => {
   const today = new Date();
+
   return (
     someDate.getDate() == today.getDate() &&
     someDate.getMonth() == today.getMonth() &&
@@ -7,9 +8,8 @@ const isToday = (someDate) => {
   );
 };
 
-const dateDiff = (firstDate, secondDate) => {
-  return Math.ceil(Math.abs(firstDate - secondDate) / (1000 * 60 * 60 * 24));
-};
+const dateDiff = (firstDate = new Date(), secondDate = new Date()) =>
+  Math.ceil(Math.abs(firstDate - secondDate) / (1000 * 60 * 60 * 24));
 
 module.exports = {
   isToday,

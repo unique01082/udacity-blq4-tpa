@@ -1,4 +1,9 @@
 import "./styles/base.scss";
+import { renderTripList } from "./js/renderer";
 
-export { checkForUrl } from "./js/urlChecker";
+window.addEventListener("load", () => {
+  renderTripList();
+});
+
+export { validateFormData } from "./js/validateFormData";
 export { handleSubmit } from "./js/formHandler";

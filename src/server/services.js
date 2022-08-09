@@ -10,16 +10,6 @@ async function getGeographyInfo(place) {
   });
 }
 
-async function getOpenWeatherMapForecast(lat, long) {
-  return axios.get("https://api.openweathermap.org/data/2.5/weather", {
-    params: {
-      lat: lat,
-      lon: long,
-      appid: "923fe800aca046b69819c7c974ad2e28",
-    },
-  });
-}
-
 async function getWeatherBitForecast(lat, long) {
   return axios.get("https://api.weatherbit.io/v2.0/forecast/daily", {
     params: {
@@ -40,9 +30,22 @@ async function getPixabayResources(place) {
   });
 }
 
+async function getCountryInfo(countryCode) {
+  return axios.get(`https://restcountries.com/v2/alpha/${countryCode}`);
+}
+
+async function getCurrencyExchangeRate(...countryCode) {
+  return axios.get(`https://api.exchangerate.host/latest`, {
+    params: {
+      symbols: countryCode.join(","),
+    },
+  });
+}
+
 module.exports = {
   getGeographyInfo,
-  getOpenWeatherMapForecast,
   getPixabayResources,
   getWeatherBitForecast,
+  getCountryInfo,
+  getCurrencyExchangeRate,
 };
