@@ -7,6 +7,11 @@ const isToday = (someDate) => {
   );
 };
 
+const dateDiff = (firstDate, secondDate) => {
+  return Math.ceil(Math.abs(firstDate - secondDate) / (1000 * 60 * 60 * 24));
+};
+
 module.exports = {
   isToday,
+  dateDiff,
 };

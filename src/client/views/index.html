@@ -6,37 +6,105 @@
   </head>
 
   <body>
-    Hello world
-    <ul class="menu">
-      <li><a href="/about">About</a></li>
-      <li><a href="/posts">Posts</a></li>
-      <li><a href="/tags">Tags</a></li>
-    </ul>
+    <header>
+      Header
+      <ul class="menu">
+        <li><a href="/about">About</a></li>
+        <li><a href="/posts">Posts</a></li>
+        <li><a href="/tags">Tags</a></li>
+      </ul>
+    </header>
+    <main>
+      <section class="trip-form">
+        <h1>Create trip</h1>
 
-    <form onSubmit="App.handleSubmit(event)">
-      <input
-        name="place"
-        type="text"
-        placeholder="Where to..."
-        value="New York"
-        required
-      />
-      <input
-        name="from"
-        type="date"
-        placeholder="from"
-        value="2022-08-10"
-        required
-      />
-      <input
-        name="to"
-        type="date"
-        placeholder="to"
-        value="2022-08-09"
-        required
-      />
-      <button type="submit">Add</button>
-    </form>
+        <form id="create-trip" onSubmit="App.handleSubmit(event)">
+          <input
+            name="place"
+            type="text"
+            placeholder="Where to..."
+            value="New York"
+            required
+          />
+          <input
+            name="from"
+            type="date"
+            placeholder="from"
+            value="2022-08-10"
+            required
+          />
+          <input
+            name="to"
+            type="date"
+            placeholder="to"
+            value="2022-08-09"
+            required
+          />
+        </form>
+        <button type="submit" form="create-trip">Add</button>
+      </section>
+      <section class="trip-list">
+        <div class="trip-detail">
+          <p class="trip-title">Natural beauty</p>
+          <img
+            class="trip-thumbnail"
+            src="https://images.pexels.com/photos/257840/pexels-photo-257840.jpeg?cs=srgb&dl=agriculture-apple-blur-257840.jpg&fm=jpg"
+            alt=""
+          />
+          <p class="trip-date">12th December, 2018</p>
+          <p class="trip-note">
+            One morning, when Gregor Samsa woke from troubled dreams, he found
+            himself transformed in his bed into a horrible vermin.
+          </p>
+        </div>
+        <h2>
+          <div class="trip-detail">
+            <p class="trip-title">Natural beauty</p>
+            <img
+              class="trip-thumbnail"
+              src="https://images.pexels.com/photos/257840/pexels-photo-257840.jpeg?cs=srgb&dl=agriculture-apple-blur-257840.jpg&fm=jpg"
+              alt=""
+            />
+            <p class="trip-date">12th December, 2018</p>
+            <p class="trip-note">
+              One morning, when Gregor Samsa woke from troubled dreams, he found
+              himself transformed in his bed into a horrible vermin.
+            </p>
+          </div>
+        </h2>
+        <h2>
+          <div class="trip-detail">
+            <p class="trip-title">Natural beauty</p>
+            <img
+              class="trip-thumbnail"
+              src="https://images.pexels.com/photos/257840/pexels-photo-257840.jpeg?cs=srgb&dl=agriculture-apple-blur-257840.jpg&fm=jpg"
+              alt=""
+            />
+            <p class="trip-date">12th December, 2018</p>
+            <p class="trip-note">
+              One morning, when Gregor Samsa woke from troubled dreams, he found
+              himself transformed in his bed into a horrible vermin.
+            </p>
+          </div>
+        </h2>
+        <h2>4</h2>
+        <h2>5</h2>
+        <h2>6</h2>
+        <h2>7</h2>
+        <h2>8</h2>
+        <h2>9</h2>
+        <h2>10</h2>
+        <h2>11</h2>
+        <h2>12</h2>
+        <h2>13</h2>
+        <h2>14</h2>
+        <h2>15</h2>
+        <h2>16</h2>
+        <h2>17</h2>
+        <h2>18</h2>
+      </section>
+    </main>
+    <footer>Footer</footer>
 
     <script>
       if ("serviceWorker" in navigator) {
