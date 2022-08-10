@@ -1,3 +1,5 @@
+import { validateFormData } from "./validateFormData";
+
 test("not a string to be false", () => {
-  expect("function").toBe("function");
+  expect(typeof validateFormData).toBe("function");
 });

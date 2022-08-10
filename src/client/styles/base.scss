@@ -25,6 +25,7 @@
 
 body {
   font-family: "Bellota Text", cursive;
+  color: #666;
 }
 
 button,
@@ -44,4 +45,9 @@ button:hover,
 input:hover {
   box-shadow: rgba(185, 185, 255, 0.25) 0px 30px 60px -12px inset,
     rgba(250, 194, 194, 0.3) 0px 18px 36px -18px inset;
+}
+
+strong {
+  font-weight: bold;
+  color: #111;
 }

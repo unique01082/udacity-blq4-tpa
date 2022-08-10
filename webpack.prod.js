@@ -1,7 +1,7 @@
 const path = require("path");
 const webpack = require("webpack");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
-
+const CopyPlugin = require("copy-webpack-plugin");
 const WorkboxPlugin = require("workbox-webpack-plugin");
 
 module.exports = {
@@ -9,7 +9,7 @@ module.exports = {
   mode: "production",
   output: {
     library: {
-      name: "Client",
+      name: "App",
       type: "var",
     },
   },
@@ -30,6 +30,9 @@ module.exports = {
     new HtmlWebPackPlugin({
       template: "./src/client/views/index.html",
       filename: "./index.html",
+    }),
+    new CopyPlugin({
+      patterns: [{ from: "public" }],
     }),
     new WorkboxPlugin.GenerateSW(),
   ],

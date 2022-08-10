@@ -1,3 +1,5 @@
+import { handleSubmit } from "./formHandler";
+
 test("not a string to be false", () => {
-  expect("function").toBe("function");
+  expect(typeof handleSubmit).toBe("function");
 });

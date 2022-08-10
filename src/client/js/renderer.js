@@ -8,7 +8,7 @@ const postListElement = document.querySelector(".trip-list");
 
 export async function renderTripList() {
   postListElement.innerHTML = "Loading...";
-  const trips = await (await axios.get("http://localhost:8080/trips")).data;
+  const trips = await (await axios.get("http://localhost:9099/trips")).data;
   const dom = trips
     .reverse()
     .map((trip) => {
@@ -28,14 +28,14 @@ function renderTrip(trip) {
   <p class="trip-subtitle"><img src="${
     trip.countryData.flag
   }" alt="flag" width="30" height="20"  /> ${trip.countryData.name}</p>
-  <p class="trip-date">Languages: ${trip.countryData.languages
+  <p class="trip-date">Languages: <strong>${trip.countryData.languages
     .map((language) => language.name)
-    .join(", ")}</p>
+    .join(", ")}</strong></p>
   ${trip.countryData.currencies.map(
     (currency) =>
-      `<p class="trip-currency">${currency.name} (${currency.code}) - ${
+      `<p class="trip-currency">${currency.name} (${currency.code}) - <strong>${
         currency.symbol
-      } </p><p class="trip-exchange-rate">1$ = ${
+      }</strong></p><p class="trip-exchange-rate">1$ = ${
         trip.currencyExchangeRateInfo.rates[currency.code] ?? "unknown"
       }${currency.symbol}</p>`
   )}
