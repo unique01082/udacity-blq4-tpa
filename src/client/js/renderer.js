@@ -6,6 +6,9 @@ const formatDate = (dateString) => {
 
 const postListElement = document.querySelector(".trip-list");
 
+/**
+ * Get trips from server and render trips to UI
+ */
 export async function renderTripList() {
   postListElement.innerHTML = "Loading...";
   const trips = await (await axios.get("http://localhost:9099/trips")).data;
@@ -19,6 +22,11 @@ export async function renderTripList() {
   postListElement.innerHTML = dom;
 }
 
+/**
+ * Render a trip
+ * @param trip
+ * @returns
+ */
 function renderTrip(trip) {
   return `<div class="trip-detail">
   <p class="trip-title">${trip.geographyInfo.postalCodes[0].placeName}</p>
@@ -53,6 +61,11 @@ function renderTrip(trip) {
 </div>`;
 }
 
+/**
+ * Render weather information
+ * @param weather
+ * @returns
+ */
 function renderWeather(weather) {
   return `
   <div class="weather-detail">

@@ -32,16 +32,33 @@ main {
     input {
       width: 192px;
     }
+
+    form {
+      display: flex;
+      flex-direction: row;
+      gap: 16px;
+      align-items: center;
+
+      label {
+        color: white;
+        text-decoration: underline;
+      }
+    }
+
+    @media only screen and (max-width: 768px) {
+      form {
+        flex-direction: column;
+      }
+    }
   }
 
   .trip-list {
     display: grid;
     flex-grow: 1;
-    padding: 16px;
     gap: 16px;
     padding: 32px;
     grid-template-columns: repeat(auto-fit, 500px);
-    grid-auto-rows: 800px;
+    grid-auto-rows: 900px;
     justify-content: center;
 
     .trip-detail {
@@ -49,7 +66,7 @@ main {
       flex-direction: column;
       gap: 16px;
       width: 500px;
-      height: 800px;
+      height: 900px;
       background: #fff;
       padding: 20px;
       border-radius: 4px;
