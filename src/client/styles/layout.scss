@@ -114,6 +114,12 @@ main {
         }
       }
     }
+
+    @media only screen and (max-width: 768px) {
+      trip-detail {
+        width: 80vw;
+      }
+    }
   }
 }
 
